@@ -2,3 +2,9 @@
     font-family: rubik-light;
     src: url(../fonts/Rubik-Light.ttf);
 }
+
+.grid-item {
+    max-width: 300px;
+    min-width: 200px;
+    margin-bottom: 10px;
+}
