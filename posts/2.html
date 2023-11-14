@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BG6JZ6XC9Q"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-BG6JZ6XC9Q');
+        </script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>secw01f - Post 2</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link href="../css/secw01f.css" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg border-bottom" id="nav">
+            <div class="container-fluid">
+                <div class="navbar-collapse collapse justify-content-end mx-5">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="whoami.html">whoami</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 576 512"><style>svg{fill:#000000}</style><path d="M9.4 86.6C-3.1 74.1-3.1 53.9 9.4 41.4s32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L178.7 256 9.4 86.6zM256 416H544c17.7 0 32 14.3 32 32s-14.3 32-32 32H256c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
+                    <a class="navbar-brand" href="/" style="font-family: rubik-light;">secw01f</a>
+                </div>
+                <div class="navbar-collapse collapse justify-content-start mx-5">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/secw01f">git</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container my-5">
+            <div class="col">
+                <div class="row my-4">
+                    <h2 style="font-family: rubik-light; text-align: center;">Burp for Dev and QA Teams</h2>
+                </div>
+                <div class="row my-2">
+                    <p style="text-align: center;">11-14-2023</p>
+                </div>
+                <div class="row my-4 justify-content-center">
+                </div>
+                <div class="row my-4 mx-5">
+                    <p>I am going to talk about AppSec for a hot second. Having worked with different web and mobile application Dev/QA teams in different capacities, I have seen some great relationships between Security and Dev organizations, and some not so great. What I have noticed is that the success or failure of the relationship always came down to three things. Communication, technical understanding (on both sides), and priorities. Ultimately, I have come to a bold conclusion... Well, not that bold... Why not work with the Dev/QA teams to add Burp to their toolkit? Burp comes in a Community, Professional, and Enterprise editions and can be implemented with any budget. With that said, I will admit that title of this post is a little misleading as this isn’t a, “How to Use Burp” situation, but bear with me.</p>
+                    <p>Yes, I know that just throwing a tool at a situation is never a good idea in security. I am not talking about having Dev and QA testers simply install Burp on their machines and telling them, "Go get em' tiger". I am talking about a holistic approach that improves communication, technical understanding, and can help alleviate pressure when priorities conflict. So lets dive in.</p>
+                    <p><strong>Communication</strong></p>
+                    <p>The first aspect we are going to cover is communication. There are a couple wins to be had here, so we are going to start off with training. I know that training also falls under technical understanding, but hear me out.</p>
+                    <p>A joint training session is a great opportunity to continue communication or even improve it. The execution of the training is going to come down to a few different components, and those are capability, resources, and possibly budget. If you have the capability and resources to generate and deliver your own training, I highly recommend it. If you don't have the capability or resources but can squeeze out the budget, you can bring in an outside resource to deliver the training as well. Regardless of who is presenting the training, below are the components that are absolutely necessary.</p>
+                    <ol class="ms-5">
+                    <li>An introduction to what Burp is.</li>
+                    <li>An introduction to what Burp can be used for.</li>
+                    <li>A walk through of how to install and configure Burp for basic usage.</li>
+                    <li>Detailed instruction on the use of the Target/Scope, Intercept, HTTP History, and Repeater functionality.</li>
+                    <li>An opportunity to test out Burp on a demo environment.</li>
+                    </ol>
+                    <p>I want to make a quick note before we continue. I know I didn't include Intruder or some of the other extensions in Burp. I would consider these to be a little more advanced functionalities and we are starting off with the basics for now. If you want to include them, go forth and conquer.</p>
+                    <p>Outside of the training, this an opportunity to bounce ideas off one another, which is the second win. Burp can be used for not just security testing but also to simply understand how an app works and is interacting between server and client. There is now a starting point for building shared resources that can help both the Security and Dev organization whether it be squashing bugs, or conducting security testing. You can start to speak the same language.</p>
+                    <p><strong>Technical Understanding</strong></p>
+                    <p>A Security organization and a Dev organization are going to look at an app from two different lenses. One looks at how the app is supposed to work and the other looks at how it can be abused. Fully knowing how the app works doesn’t mean you know how to abuse it and knowing how to abuse it doesn’t mean you fully understand how it works. </p>
+                    <p>I am going to say something that may hurt a few peoples feelings, but it needs to be said… Security peeps, those “steps to reproduce” that you provided in your report with a screenshot of Burp is not helpful when the person reproducing the issue has never used Burp… you know what happens when you make assumptions… I will openly admit that I have been guilty of this and yes, I know this doesn’t cover every situation, but it is common enough that it needed to be said. Good news though, with a little shared Burp knowledge, security findings can be better prioritized and fixes can be validated faster.</p>
+                    <p>My Dev friends, I am not saying that you are doing testing instead of security. This is an opportunity to translate security findings into actionable data for fixes and an opportunity to no longer have to send findings back over the fence for validation. Enablement is the name of the game.</p>
+                    <p><strong>Priorities</strong></p>
+                    <p>The priorities of the Dev organization and the priorities of the Security organization can be notorious for conflicting. The top scenario that comes to mind is the last minute security testing needed before the release of a new feature. The Dev team needs the code to go out on time so fixes need to be simple, but the Security team needs to ensure that the feature is secure so fixes need to be implemented before release. Having both teams armed with Burp, testing and fixes can take place in parallel.</p>
+                    <p>Yes, the Dev and Security organizations should be working together early on in the design stage to help prevent this scenario, but let's not kid ourselves. This happens on the regular and the typical flow of the scenario goes as follows:</p>
+                    <ol class="ms-5">
+                    <li>Feature is developed</li>
+                    <li>Testing is requested</li>
+                    <li>Testing is executed</li>
+                    <li>Findings are reported</li>
+                    <li>Findings are triaged</li>
+                    <li>Fixes are developed</li>
+                    <li>Validation is requested</li>
+                    <li>Validation is executed</li>
+                    <li>Validation findings are reported</li>
+                    <li>Feature is released</li>
+                    </ol>
+                    <p>That is ten steps that have to take place before a deadline. Adding Burp to the mix with the the concepts noted above, and you can almost cut the flow in half!</p>
+                    <ol class="ms-5">
+                    <li>Feature is developed</li>
+                    <li>Testing is requested</li>
+                    <li>Testing is executed and findings are reported during testing</li>
+                    <li>Findings are triaged</li>
+                    <li>Fixes are developed and validated</li>
+                    <li>Feature is released</li>
+                    </ol>
+                    <p>Priorities may conflict but, communication and technical understanding with Burp can help Dev and Security organizations achieve objectives in a timely manor.</p>
+                    <p><strong>What's Next</strong></p>
+                    <p>Try it out. I am confident you won't be disappointed. If you have questions or need further guidance on execution, just reach out.</p>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </body>
+</html>
