@@ -20,8 +20,7 @@
   --panel:color-mix(in srgb, var(--template-surface-elevated) 60%, transparent);
   --glow-primary:0 0 24px color-mix(in srgb, var(--template-primary) 26%, transparent);
   --mono:'IBM Plex Mono', ui-monospace, monospace;
-  --serif:'Source Serif 4', Georgia, serif;
-  --sans:'Helvetica Neue', Helvetica, 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --sans:'IBM Plex Sans', 'Helvetica Neue', Helvetica, system-ui, -apple-system, sans-serif;
   --radius:var(--template-border-radius);
 }
 *{box-sizing:border-box;}
@@ -32,7 +31,7 @@ body{
   background-image:var(--template-gradient);
   background-attachment:fixed;
   color:var(--text);
-  font-family:var(--serif);
+  font-family:var(--sans);
   font-size:17px;
   line-height:1.65;
   min-height:100vh;
