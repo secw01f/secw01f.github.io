@@ -28,6 +28,8 @@ import {
   readdirSync,
   rmSync,
   existsSync,
+  cpSync,
+  statSync,
 } from "node:fs";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -153,6 +155,14 @@ if (!jsPath || !cssPath) {
   throw new Error(`esbuild did not emit expected assets: ${outputs.join(", ")}`);
 }
 
+// Static media (post images, etc.) committed under src/assets/ → dist/assets/.
+// CMS publishes images to src/assets/posts/<slug>/…; URLs in post HTML are
+// /assets/posts/<slug>/<file>.
+const staticAssets = p("src/assets");
+if (existsSync(staticAssets) && statSync(staticAssets).isDirectory()) {
+  cpSync(staticAssets, p("dist/assets"), { recursive: true });
+}
+
 // ---------- 3. theme vars ----------
 const presets = JSON.parse(read("src/theme/presets.json"));
 const themeVars = rootCss(presets.astro);
@@ -276,6 +286,7 @@ write(
       feed: feedHtml,
       tags: allTags,
       hasTags: allTags.length > 0,
+      hasPosts: posts.length > 0,
     }),
   })
 );
