@@ -278,6 +278,18 @@ const feedHtml = posts
 
 const allTags = [...new Set(posts.flatMap((post) => post.tags || []))].sort();
 
+// Home intro is CMS-editable via src/content/home.json (committed on publish).
+const homeIntroPath = "src/content/home.json";
+const homeIntro = existsSync(p(homeIntroPath))
+  ? JSON.parse(read(homeIntroPath))
+  : {
+      term_title: "~/secw01f — bash",
+      prompt_path: "~/secw01f",
+      prompt_cmd: "cat about.md",
+      headline: "staff security engineer, building in the open",
+      bio: "",
+    };
+
 write(
   "index.html",
   renderPage({
@@ -286,6 +298,7 @@ write(
     canonical: `${SITE.url}/`,
     ogType: "website",
     content: Mustache.render(homeTpl, {
+      ...homeIntro,
       feed: feedHtml,
       tags: allTags,
       hasTags: allTags.length > 0,

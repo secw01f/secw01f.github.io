@@ -2,15 +2,13 @@
   <div class="term">
     <div class="term-bar">
       <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      <span class="term-title">~/secw01f — bash</span>
+      <span class="term-title">{{term_title}}</span>
     </div>
     <div class="term-body">
-      <div class="prompt"><span class="path">~/secw01f</span> <span class="cmd">$ cat about.md</span></div>
-      <h1>staff security engineer, building in the open<span class="cursor"></span></h1>
+      <div class="prompt"><span class="path">{{prompt_path}}</span> <span class="cmd">$ {{prompt_cmd}}</span></div>
+      <h1>{{headline}}<span class="cursor"></span></h1>
       <div class="bio-line">
-        product security · agentic security tooling · offensive security.
-        currently shipping ASTRO. writeups are unfiltered field notes,
-        not marketing copy.
+        {{bio}}
       </div>
     </div>
   </div>
@@ -24,5 +22,10 @@
 </div>
 {{/hasTags}}
 <div class="feed">
+{{#hasPosts}}
 {{{feed}}}
+{{/hasPosts}}
+{{^hasPosts}}
+<div class="state-msg">// no entries yet</div>
+{{/hasPosts}}
 </div>
