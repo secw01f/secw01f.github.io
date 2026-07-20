@@ -21,6 +21,7 @@
   --glow-primary:0 0 24px color-mix(in srgb, var(--template-primary) 26%, transparent);
   --mono:'IBM Plex Mono', ui-monospace, monospace;
   --serif:'Source Serif 4', Georgia, serif;
+  --sans:'Helvetica Neue', Helvetica, 'Segoe UI', system-ui, -apple-system, sans-serif;
   --radius:var(--template-border-radius);
 }
 *{box-sizing:border-box;}
@@ -232,7 +233,17 @@ article h1.post-title{
   font-family:var(--mono);font-weight:700;font-size:clamp(24px,4vw,32px);
   line-height:1.25;margin:0 0 28px;color:var(--text);
 }
+article .body{
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.7;
+  letter-spacing:-0.01em;
+  color:var(--text);
+}
 article .body p{margin:0 0 20px;font-size:17px;color:var(--text);}
+article .body ul,article .body ol{margin:0 0 20px;padding-left:1.35em;}
+article .body li{margin:0 0 8px;}
+article .body li:last-child{margin-bottom:0;}
 article .body h3{
   font-family:var(--mono);font-size:16px;color:var(--text);
   margin:34px 0 14px;letter-spacing:0.01em;
@@ -248,8 +259,9 @@ article .body pre{
   padding:26px 18px 16px;overflow-x:auto;font-family:var(--mono);font-size:13.5px;
   color:var(--text);line-height:1.6;margin:24px 0;white-space:pre-wrap;
   box-shadow:var(--template-card-shadow);
+  letter-spacing:0;
 }
-article .body code{font-family:var(--mono);font-size:0.9em;color:var(--template-info);}
+article .body code{font-family:var(--mono);font-size:0.9em;color:var(--template-info);letter-spacing:0;}
 article .body pre code{color:inherit;}
 article .body blockquote{
   border-left:3px solid var(--template-primary);margin:28px 0;padding:2px 0 2px 20px;
@@ -263,7 +275,7 @@ article .body img{
 article .body figure{margin:28px 0;}
 article .body figcaption{
   font-family:var(--mono);font-size:12px;color:var(--muted);
-  margin-top:8px;text-align:center;
+  margin-top:8px;text-align:center;letter-spacing:0;
 }
 .post-tags{
   display:flex;gap:8px;flex-wrap:wrap;margin-top:40px;margin-bottom:28px;padding-top:24px;
