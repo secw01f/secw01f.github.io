@@ -204,7 +204,10 @@ const ajv = new Ajv({ allErrors: true });
 const validatePost = ajv.compile(JSON.parse(read("schema/post.schema.json")));
 
 const postsDir = "src/content/posts";
-const postFiles = readdirSync(p(postsDir)).filter((f) => f.endsWith(".html"));
+mkdirSync(p(postsDir), { recursive: true });
+const postFiles = existsSync(p(postsDir))
+  ? readdirSync(p(postsDir)).filter((f) => f.endsWith(".html"))
+  : [];
 
 // Parse + validate every post first, so the site index (used by the
 // command palette on every page) is complete before any page renders.
