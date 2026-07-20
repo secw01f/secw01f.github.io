@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # Manual re-deploy without committing dist to the repo.
+  workflow_dispatch:
 
 # Least-privilege by default; the deploy job needs Pages + OIDC.
 permissions:
@@ -29,17 +31,19 @@ jobs:
 
       # Builds the site and validates every post's metadata against the
       # schema. A malformed CMS PR fails here, before it can merge.
+      # dist/ is produced here and uploaded as a Pages artifact — it is
+      # never committed to the repo (gitignored).
       - run: npm run build
 
       - name: Upload Pages artifact
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
-    # Only publish on merges to main; PRs get the build check only.
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    # Publish on merges to main and on manual workflow_dispatch.
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     needs: build
     runs-on: ubuntu-latest
     permissions:
