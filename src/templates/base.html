@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{{canonical}}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:type" content="{{ogType}}">
+<meta property="og:url" content="{{{canonical}}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&display=swap" rel="stylesheet">
+<style>
+{{{themeVars}}}
+</style>
+<link rel="stylesheet" href="/{{{cssPath}}}">
+<link rel="alternate" type="application/rss+xml" title="secw01f — RSS" href="/feed.xml">
+<link rel="alternate" type="application/atom+xml" title="secw01f — Atom" href="/atom.xml">
+</head>
+<body>
+
+{{> header}}
+
+<main class="wrap">
+{{{content}}}
+</main>
+
+{{> footer}}
+
+<script type="application/json" id="site-index">{{{siteIndex}}}</script>
+<script src="/{{{jsPath}}}" defer></script>
+</body>
+</html>
