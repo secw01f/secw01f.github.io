@@ -1,30 +1,34 @@
+<!--
+  CONTRACT — static page. Filled by the backend (or authored by hand) and
+  committed to src/content/pages/<name>.html. Renders to /<name>/. The build
+  reads data-title / data-description from the root <article> and wraps the
+  markup in the site shell; it does NOT re-render this template.
+-->
 <article class="page"
   data-title="whoami — secw01f"
-  data-description="Who secw01f is: staff security engineer working across product security, agentic security tooling, and offensive security.">
+  data-description="Who secw01f is: security researcher working across all of security, agentic security tooling, and offensive security tradecraft.">
   <section class="hero">
-    <div class="term">
-      <div class="term-bar">
-        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-        <span class="term-title">~/secw01f — bash</span>
-      </div>
-      <div class="term-body">
-        <div class="prompt"><span class="path">~/secw01f</span> <span class="cmd">$ whoami</span></div>
-        <h1>secw01f<span class="cursor"></span></h1>
-        <div class="bio-line">
-          staff security engineer. i work where product security, agentic
-          security tooling, and offensive security overlap — and i build in
-          the open.
-        </div>
+  <div class="term">
+    <div class="term-bar">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="term-title">~/secw01f — bash</span>
+    </div>
+    <div class="term-body">
+      <div class="prompt"><span class="path">~/secw01f</span> <span class="cmd">$ whoami</span></div>
+      <h1>secw01f<span class="cursor"></span></h1>
+      <div class="bio-line">
+        security researcher and leader. i work across all of security with a background in offensive security, build agentic security tooling, and help contribute to the security community in the best way I can. oh... and build in the open.
       </div>
     </div>
-  </section>
-
-  <div class="body">
-    <h3>what i do</h3>
-    <p>I design and ship security systems: agentic stacks that run themselves, tooling that puts findings where engineers already work, and offensive tradecraft that keeps the defensive work honest.</p>
-    <h3>currently</h3>
-    <p>Shipping <strong>ASTRO</strong> — an agentic security platform for scheduling and running security stacks on autopilot. Most of the writeups in the <a href="/">log</a> are field notes from that work.</p>
-    <h3>elsewhere</h3>
-    <p>Code and experiments live on <a href="https://github.com/secw01f" target="_blank" rel="noopener">GitHub</a>. This site is the long-form version — unfiltered notes on breaking and building things.</p>
   </div>
+</section>
+
+<div class="body">
+<h3>what i do</h3>
+<p>I design and ship security programs and systems: agentic stacks that run themselves, tooling that puts findings where engineers already work. Building offensive security, application security, asm, grc, and detection &amp; incident response programs from the ground up.</p>
+<h3>currently</h3>
+<p>Shipping <strong>ASTRO</strong> — an agentic security platform for scheduling and running security stacks on autopilot. Write-ups coming soon. Refreshing this site first :)</p>
+<h3>elsewhere</h3>
+<p>Code and experiments live on <a href="https://github.com/secw01f" rel="noopener noreferrer">GitHub</a>. This site is the long-form version — unfiltered notes on breaking and building things.</p>
+</div>
 </article>
