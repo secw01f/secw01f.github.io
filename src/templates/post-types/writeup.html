@@ -1,0 +1,39 @@
+<!--
+  CONTRACT — "writeup" post.
+
+  The backend fills these placeholders and commits the result to
+  src/content/posts/<id>.html. That committed file IS the page source; the
+  build reads the data-* attributes on the root <article> (for the feed, RSS,
+  sitemap, and Cmd-K index) and wraps this markup in the site shell. The build
+  does NOT re-render this template.
+
+  Rules:
+    - The root MUST be a single <article> whose data-id equals the filename stem.
+    - data-* values are attribute-encoded ("&" -> &amp;, '"' -> &quot;, ">" -> &gt;).
+    - data-tags is a comma-separated list.
+    - "writeup" requires data-diff-add and data-diff-rem (see schema/post.schema.json).
+-->
+<article class="post type-writeup"
+  data-id="{{id}}"
+  data-type="writeup"
+  data-date="{{date}}"
+  data-title="{{title}}"
+  data-excerpt="{{excerpt}}"
+  data-tags="{{tagsCsv}}"
+  data-diff-add="{{diffAdd}}"
+  data-diff-rem="{{diffRem}}">
+  <a href="/" class="back-link">← log/</a>
+  <div class="post-meta">
+    <span>{{date}}</span>
+    <span class="tag tag-type">writeup</span>
+  </div>
+  <div class="post-diff">
+    <span class="add">+ {{diffAdd}}</span>
+    <span class="rem">- {{diffRem}}</span>
+  </div>
+  <h1 class="post-title">{{title}}</h1>
+  <div class="body">
+    {{{body}}}
+  </div>
+  <div class="post-tags">{{#tags}}<span class="tag">{{.}}</span>{{/tags}}</div>
+</article>

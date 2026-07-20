@@ -1,0 +1,28 @@
+<!--
+  CONTRACT — "advisory" post. Filled by the backend, committed to
+  src/content/posts/<id>.html. See writeup.html for the full rules.
+  "advisory" requires data-severity (one of none|low|medium|high|critical);
+  data-cve is optional (e.g. CVE-2026-12345). The diff eyebrow is optional.
+-->
+<article class="post type-advisory"
+  data-id="{{id}}"
+  data-type="advisory"
+  data-date="{{date}}"
+  data-title="{{title}}"
+  data-excerpt="{{excerpt}}"
+  data-tags="{{tagsCsv}}"
+  data-severity="{{severity}}"
+  data-cve="{{cve}}">
+  <a href="/" class="back-link">← log/</a>
+  <div class="post-meta">
+    <span>{{date}}</span>
+    <span class="tag tag-type">advisory</span>
+    <span class="sev sev-{{severity}}">{{severity}}</span>
+    {{#cve}}<span class="tag cve">{{cve}}</span>{{/cve}}
+  </div>
+  <h1 class="post-title">{{title}}</h1>
+  <div class="body">
+    {{{body}}}
+  </div>
+  <div class="post-tags">{{#tags}}<span class="tag">{{.}}</span>{{/tags}}</div>
+</article>

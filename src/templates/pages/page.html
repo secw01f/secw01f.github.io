@@ -1,0 +1,11 @@
+<!--
+  CONTRACT — static page. Filled by the backend (or authored by hand) and
+  committed to src/content/pages/<name>.html. Renders to /<name>/. The build
+  reads data-title / data-description from the root <article> and wraps the
+  markup in the site shell; it does NOT re-render this template.
+-->
+<article class="page"
+  data-title="{{title}}"
+  data-description="{{description}}">
+  {{{body}}}
+</article>

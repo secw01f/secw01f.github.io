@@ -1,0 +1,15 @@
+<a class="entry type-{{type}}" href="/posts/{{id}}/" data-type="{{type}}" data-tags="{{tagsAttr}}">
+  <div class="meta">
+    <span>{{date}}</span>
+    <span class="tag tag-type">{{type}}</span>
+  </div>
+  {{#hasDiff}}
+  <div class="diff">
+    {{#diffAdd}}<span class="add">+ {{diffAdd}}</span>{{/diffAdd}}
+    {{#diffRem}}<span class="rem">- {{diffRem}}</span>{{/diffRem}}
+  </div>
+  {{/hasDiff}}
+  <h2>{{title}}</h2>
+  <p class="excerpt">{{excerpt}}</p>
+  <span class="read-more">read</span>
+</a>

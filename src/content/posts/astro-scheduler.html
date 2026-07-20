@@ -1,0 +1,32 @@
+<article class="post type-writeup"
+  data-id="astro-scheduler"
+  data-type="writeup"
+  data-date="2026-06-05"
+  data-title="Shipping ASTRO's Scheduler"
+  data-excerpt="A Celery poller, a timezone-aware Schedule table, and a Redis lock — the unglamorous plumbing behind running security stacks on autopilot."
+  data-tags="astro,agentic-security,automation"
+  data-diff-add="scheduled execution for agentic security stacks"
+  data-diff-rem="manual re-runs and missed drift windows">
+  <a href="/" class="back-link">← log/</a>
+  <div class="post-meta">
+    <span>2026-06-05</span>
+    <span class="tag tag-type">writeup</span>
+  </div>
+  <div class="post-diff">
+    <span class="add">+ scheduled execution for agentic security stacks</span>
+    <span class="rem">- manual re-runs and missed drift windows</span>
+  </div>
+  <h1 class="post-title">Shipping ASTRO's Scheduler</h1>
+  <div class="body">
+    <p>Every agentic security stack I've shipped so far has had the same failure mode: it only runs when a human remembers to run it. ASTRO's scheduler exists to remove that dependency entirely.</p>
+    <h3>The shape of it</h3>
+    <p>A <code>Schedule</code> table holds timezone-aware run times per stack. A poller wakes on an interval, claims due schedules with a Redis lock so two workers never double-fire, and hands off to a generic <code>run_scheduled_stack</code> task that reuses the same <code>storage_consumer</code> layer every manual run already goes through.</p>
+    <blockquote>The goal was zero new execution paths — scheduled runs should be indistinguishable from manual ones by the time they hit the stack.</blockquote>
+    <pre data-lang="flow">SCHEDULE.next_run_at &lt;= now()
+  &rarr; acquire_lock(schedule.id)
+  &rarr; run_scheduled_stack.delay(schedule.stack_id)
+  &rarr; release_lock(schedule.id)</pre>
+    <p>Next up: surfacing drift between scheduled runs in a diff view, so a stack quietly changing behavior over time is something you notice instead of something you find out about later.</p>
+  </div>
+  <div class="post-tags"><span class="tag">astro</span><span class="tag">agentic-security</span><span class="tag">automation</span></div>
+</article>

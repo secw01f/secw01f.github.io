@@ -1,0 +1,28 @@
+<article class="post type-advisory"
+  data-id="example-advisory"
+  data-type="advisory"
+  data-date="2026-07-01"
+  data-title="Example Advisory: SSRF via Unvalidated Webhook URL"
+  data-excerpt="A sample advisory-type post — server-side request forgery through a webhook field that never validated its target, reachable from an unauthenticated endpoint."
+  data-tags="advisory,ssrf,sample"
+  data-severity="high"
+  data-cve="CVE-2026-12345">
+  <a href="/" class="back-link">← log/</a>
+  <div class="post-meta">
+    <span>2026-07-01</span>
+    <span class="tag tag-type">advisory</span>
+    <span class="sev sev-high">high</span>
+    <span class="tag cve">CVE-2026-12345</span>
+  </div>
+  <h1 class="post-title">Example Advisory: SSRF via Unvalidated Webhook URL</h1>
+  <div class="body">
+    <p>This is a placeholder <strong>advisory</strong> post kept as a reference fixture. It demonstrates the advisory layout: a severity badge, an optional CVE tag, and the standard body.</p>
+    <h3>Summary</h3>
+    <p>A webhook configuration field accepted an arbitrary URL and the server fetched it without validating the host, allowing requests to internal-only services from an unauthenticated context.</p>
+    <h3>Impact</h3>
+    <p>An attacker could reach internal metadata endpoints and cloud credential services, escalating from unauthenticated access to sensitive infrastructure.</p>
+    <h3>Remediation</h3>
+    <p>Validate and allowlist outbound webhook hosts, block link-local and private ranges, and require authentication on the configuration endpoint.</p>
+  </div>
+  <div class="post-tags"><span class="tag">advisory</span><span class="tag">ssrf</span><span class="tag">sample</span></div>
+</article>

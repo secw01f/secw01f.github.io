@@ -1,0 +1,20 @@
+{
+  "astro": {
+    "mode": "dark",
+    "primary": "#1d7fea",
+    "accent": "#559af1",
+    "progress": "#1d7fea",
+    "success": "#7dff95",
+    "warning": "#ffbc5e",
+    "danger": "#ff8080",
+    "info": "#87d1ff",
+    "gradientStart": "#0d1117",
+    "gradientEnd": "#151d2e",
+    "sidebarBg": "#0a0a0a",
+    "sidebarText": "#e8e8e8",
+    "surfaceBg": "#121212",
+    "surfaceElevated": "#1e1e1e",
+    "cardShadow": "0 8px 24px rgba(0,0,0,0.45)",
+    "borderRadius": 8
+  }
+}

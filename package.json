@@ -1,0 +1,18 @@
+{
+  "name": "secw01f-blog",
+  "version": "1.0.0",
+  "description": "secw01f personal site — source + build pipeline. CMS commits page source, GitHub Actions builds static HTML and deploys to GitHub Pages.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/build.mjs && python3 -m http.server -d dist 8080",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "esbuild": "^0.24.0",
+    "mustache": "^4.2.0"
+  },
+  "license": "MIT"
+}
