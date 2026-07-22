@@ -63,11 +63,18 @@ header.site{
 }
 header.site .wrap{
   display:flex;align-items:center;justify-content:space-between;
-  padding-top:18px;padding-bottom:18px;
+  padding-top:8px;padding-bottom:8px;
 }
 .brand{
+  display:inline-flex;align-items:center;gap:8px;
   font-family:var(--mono);font-weight:600;font-size:15px;
   color:var(--text);letter-spacing:0.01em;
+}
+.brand-logo{
+  width:50px;height:50px;flex-shrink:0;
+  background:linear-gradient(120deg, var(--template-primary) 0%, var(--template-accent) 45%, var(--template-info) 100%);
+  -webkit-mask:url(../assets/logo.svg) center / contain no-repeat;
+  mask:url(../assets/logo.svg) center / contain no-repeat;
 }
 .brand .slash{
   color:var(--template-primary);
