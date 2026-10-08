@@ -141,8 +141,6 @@ const bundle = await esbuild.build({
   bundle: true,
   minify: true,
   entryNames: "assets/[name]-[hash]",
-  assetNames: "assets/[name]-[hash]",
-  loader: { ".svg": "file" },
   outdir: p("dist"),
   metafile: true,
   logLevel: "warning",
@@ -171,9 +169,18 @@ const themeVars = rootCss(presets.astro);
 
 // ---------- templates ----------
 const base = read("src/templates/base.html");
+// Nav links come from CMS-published src/content/nav.json so header chrome can
+// update without republishing every page body.
+const navPath = "src/content/nav.json";
+const nav = existsSync(p(navPath))
+  ? JSON.parse(read(navPath))
+  : { links: [{ href: "/whoami/", label: "whoami" }] };
+const year = new Date().getFullYear();
 const partials = {
-  header: read("src/templates/partials/header.html"),
-  footer: read("src/templates/partials/footer.html"),
+  header: Mustache.render(read("src/templates/partials/header.html"), {
+    links: nav.links || [],
+  }),
+  footer: Mustache.render(read("src/templates/partials/footer.html"), { year }),
 };
 const feedCardTpl = read("src/templates/partials/feed-card.html");
 const homeTpl = read("src/templates/pages/home.html");
@@ -196,7 +203,7 @@ function renderPage({ title, description, canonical, ogType, content }) {
       jsPath,
       siteIndex,
       content,
-      year: new Date().getFullYear(),
+      year,
     },
     partials
   );
@@ -312,17 +319,20 @@ write(
 
 // ---------- static pages ----------
 const pagesDir = "src/content/pages";
+const staticPageUrls = [];
 if (existsSync(p(pagesDir))) {
   for (const file of readdirSync(p(pagesDir)).filter((f) => f.endsWith(".html"))) {
     const rel = `${pagesDir}/${file}`;
     const { attrs, content } = parseContentFile(rel);
     const stem = basename(file, ".html");
+    const canonical = `${SITE.url}/${stem}/`;
+    staticPageUrls.push(canonical);
     write(
       `${stem}/index.html`,
       renderPage({
         title: attrs.title || `${stem} — secw01f`,
         description: attrs.description || SITE.description,
-        canonical: `${SITE.url}/${stem}/`,
+        canonical,
         ogType: "website",
         content,
       })
@@ -387,7 +397,7 @@ ${atomEntries}
 
 const urls = [
   `${SITE.url}/`,
-  `${SITE.url}/whoami/`,
+  ...staticPageUrls,
   ...posts.map((post) => post.canonical),
 ];
 write(
