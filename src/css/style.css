@@ -340,6 +340,10 @@ article .body pre:hover .copy-btn{opacity:1;}
 footer{border-top:1px solid var(--hair);padding:32px 0 60px;}
 footer .wrap{font-family:var(--mono);font-size:12px;color:var(--muted);
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;align-items:center;}
+footer .footer-legal{
+  margin-top:14px;justify-content:flex-start;
+  color:color-mix(in srgb, var(--muted) 85%, transparent);
+}
 footer a:hover{color:var(--template-primary);}
 .kbd-hint{display:inline-flex;align-items:center;gap:5px;cursor:pointer;}
 .kbd-hint:hover{color:var(--template-primary);}
