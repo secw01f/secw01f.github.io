@@ -196,6 +196,7 @@ function renderPage({ title, description, canonical, ogType, content }) {
       jsPath,
       siteIndex,
       content,
+      year: new Date().getFullYear(),
     },
     partials
   );
