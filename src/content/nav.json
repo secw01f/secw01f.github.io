@@ -1,0 +1,12 @@
+{
+  "links": [
+    {
+      "href": "/whoami/",
+      "label": "whoami"
+    },
+    {
+      "href": "/advisory/",
+      "label": "advisory"
+    }
+  ]
+}
