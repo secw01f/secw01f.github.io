@@ -6,8 +6,9 @@
     </a>
     <nav class="links">
       <a href="/">log</a>
-      <a href="/whoami/">whoami</a>
-      <a href="/advisory/">advisory</a>
+{{#links}}
+      <a href="{{href}}">{{label}}</a>
+{{/links}}
       <a href="https://github.com/secw01f" class="ext" target="_blank" rel="noopener">git</a>
     </nav>
   </div>
