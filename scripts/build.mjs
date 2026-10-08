@@ -214,6 +214,8 @@ const bundle = await esbuild.build({
   bundle: true,
   minify: true,
   entryNames: "assets/[name]-[hash]",
+  assetNames: "assets/[name]-[hash]",
+  loader: { ".svg": "file" },
   outdir: p("dist"),
   metafile: true,
   logLevel: "warning",
