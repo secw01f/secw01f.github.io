@@ -46,32 +46,78 @@ const SITE = {
   description:
     "Field notes on breaking and building things — product security, agentic security tooling, and offensive security.",
   url: "https://secw01f.github.io",
-  // Public brand / LLC identity used for Organization JSON-LD.
-  legalName: "secw01f LLC",
-  alternateName: "secw01f",
-  // Topics reflected in home/whoami copy and the site description.
-  knowsAbout: [
-    "Cybersecurity",
-    "Product Security",
-    "Agentic Security",
-    "Offensive Security",
-    "Vulnerability Research",
-  ],
-  sameAs: ["https://github.com/secw01f"],
 };
 
-function organizationJsonLd() {
+function siteJsonLd() {
   return JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: SITE.legalName,
-    alternateName: SITE.alternateName,
-    url: SITE.url,
-    description: SITE.description,
-    knowsAbout: SITE.knowsAbout,
-    // Publishing home is the log (/); individual posts live under /posts/<slug>/.
-    publishingPrinciples: `${SITE.url}/`,
-    sameAs: SITE.sameAs,
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://secw01f.com/#organization",
+        name: "secw01f LLC",
+        alternateName: "secw01f",
+        url: "https://secw01f.com/",
+        description:
+          "Security advisory, technical strategy, AI, and building. Field notes on breaking and building things.",
+        founder: {
+          "@id": "https://secw01f.com/#person",
+        },
+        knowsAbout: [
+          "Cybersecurity",
+          "Security Strategy",
+          "Security Architecture",
+          "Offensive Security",
+          "Application Security",
+          "Cloud Security",
+          "Security Engineering",
+          "Security Automation",
+          "Attack Surface Management",
+          "Artificial Intelligence",
+          "Agentic AI",
+          "Technical Strategy",
+        ],
+        publishingPrinciples: "https://secw01f.com/",
+        sameAs: ["https://github.com/secw01f"],
+      },
+      {
+        "@type": "Person",
+        "@id": "https://secw01f.com/#person",
+        name: "Evan Burkholder",
+        url: "https://secw01f.com/whoami/",
+        jobTitle: "Security Advisor and Technical Founder",
+        description:
+          "Security advisor, technical founder, and builder working at the intersection of security, AI, and technology.",
+        worksFor: {
+          "@id": "https://secw01f.com/#organization",
+        },
+        knowsAbout: [
+          "Cybersecurity",
+          "Security Strategy",
+          "Security Architecture",
+          "Offensive Security",
+          "Application Security",
+          "Cloud Security",
+          "Security Engineering",
+          "Security Automation",
+          "Attack Surface Management",
+          "Artificial Intelligence",
+          "Agentic AI",
+          "Technical Strategy",
+        ],
+        sameAs: ["https://github.com/secw01f"],
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://secw01f.com/#website",
+        url: "https://secw01f.com/",
+        name: "secw01f",
+        description: "Field notes on breaking and building things.",
+        publisher: {
+          "@id": "https://secw01f.com/#organization",
+        },
+      },
+    ],
   });
 }
 
@@ -203,7 +249,7 @@ const nav = existsSync(p(navPath))
   ? JSON.parse(read(navPath))
   : { links: [{ href: "/whoami/", label: "whoami" }] };
 const year = new Date().getFullYear();
-const jsonLd = organizationJsonLd();
+const jsonLd = siteJsonLd();
 const partials = {
   header: Mustache.render(read("src/templates/partials/header.html"), {
     links: nav.links || [],
