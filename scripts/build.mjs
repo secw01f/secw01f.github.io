@@ -46,7 +46,34 @@ const SITE = {
   description:
     "Field notes on breaking and building things — product security, agentic security tooling, and offensive security.",
   url: "https://secw01f.github.io",
+  // Public brand / LLC identity used for Organization JSON-LD.
+  legalName: "secw01f LLC",
+  alternateName: "secw01f",
+  // Topics reflected in home/whoami copy and the site description.
+  knowsAbout: [
+    "Cybersecurity",
+    "Product Security",
+    "Agentic Security",
+    "Offensive Security",
+    "Vulnerability Research",
+  ],
+  sameAs: ["https://github.com/secw01f"],
 };
+
+function organizationJsonLd() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE.legalName,
+    alternateName: SITE.alternateName,
+    url: SITE.url,
+    description: SITE.description,
+    knowsAbout: SITE.knowsAbout,
+    // Publishing home is the log (/); individual posts live under /posts/<slug>/.
+    publishingPrinciples: `${SITE.url}/`,
+    sameAs: SITE.sameAs,
+  });
+}
 
 // ---------- small helpers ----------
 const read = (rel) => readFileSync(p(rel), "utf8");
@@ -176,6 +203,7 @@ const nav = existsSync(p(navPath))
   ? JSON.parse(read(navPath))
   : { links: [{ href: "/whoami/", label: "whoami" }] };
 const year = new Date().getFullYear();
+const jsonLd = organizationJsonLd();
 const partials = {
   header: Mustache.render(read("src/templates/partials/header.html"), {
     links: nav.links || [],
@@ -204,6 +232,7 @@ function renderPage({ title, description, canonical, ogType, content }) {
       siteIndex,
       content,
       year,
+      jsonLd,
     },
     partials
   );
