@@ -45,7 +45,7 @@ const SITE = {
   title: "secw01f/",
   description:
     "Field notes on breaking and building things — product security, agentic security tooling, and offensive security.",
-  url: "https://secw01f.github.io",
+  url: "https://secw01f.com",
 };
 
 function siteJsonLd() {
