@@ -80,10 +80,16 @@ header.site .wrap{
   color:var(--template-primary);
   text-shadow:0 0 12px color-mix(in srgb, var(--template-primary) 55%, transparent);
 }
-nav.links{display:flex;gap:22px;font-family:var(--mono);font-size:13px;color:var(--muted);}
+nav.links{display:flex;align-items:center;gap:22px;font-family:var(--mono);font-size:13px;color:var(--muted);}
 nav.links a{position:relative;transition:color .15s ease;}
 nav.links a:hover,nav.links a.active{color:var(--template-primary);}
 nav.links a.ext::after{content:" ↗";font-size:11px;}
+nav.links a.icon-link{
+  display:inline-flex;align-items:center;justify-content:center;
+  color:var(--muted);
+}
+nav.links a.icon-link:hover{color:var(--template-primary);}
+nav.links a.icon-link svg{display:block;}
 
 /* ---------- terminal window chrome ---------- */
 .term{
